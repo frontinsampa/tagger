@@ -13,7 +13,6 @@ function App() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -23,7 +22,7 @@ function App() {
     const [data] = csv;
 
     Papa.parse(data, {
-      complete: function(result) {
+      complete: function(result: any) {
         const [, ...rows] = result.data;
         const fullname = rows.map((row: string[]) => {
           const [, name, surname] = row;
@@ -61,7 +60,7 @@ function App() {
 
       <div>
         <div className="paper">
-          {list.map(({ name, surname }, index) => (
+          {list.map(({ name, surname }: any, index) => (
             <div key={index} className="card">
               <span className="card__name">
                 {name}
